@@ -46,5 +46,6 @@ permissions: "user"
 - view existing flights
 - book tickets for available flights
 - have the app insert their payment details from the database (if they exist).
-- or input a card manually to "pay" for the flight. (Note that the app doesn't check for card validity)
+- or input a card manually to "pay" for the flight.
+(Note that the app doesn't check for card validity and doesn't try to make a transaction.)
 ```
