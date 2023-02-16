@@ -1,4 +1,4 @@
-# Node Js & Express Web app.
+# Node Js & Express MVC Web app.
 
 A college project in Node JS using Express and MongoDB.<br>
 Description: a basic "travel agency" website.
@@ -43,8 +43,8 @@ permissions: "user"
 ```
 3. Regular users can:
 ```
-- view existing flights
-- book tickets for available flights
+- view existing flights, sort and filter flights.
+- book tickets for available flights.
 - have the app insert their payment details from the database (if they exist).
 - or input a card manually to "pay" for the flight.
 (Note that the app doesn't check for card validity and doesn't try to make a transaction.)
