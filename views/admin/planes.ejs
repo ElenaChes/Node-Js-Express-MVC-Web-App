@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!--[ Use nav bar on every page ]-->
+  <%- include('../includes/head.ejs') %> <%- include('../includes/nav.ejs') %>
+  <body>
+    <div>
+      <h1>Manage Planes</h1>
+      <!--[ Info msg ]-->
+      <% if (message){ %> <% if (message.text){ %><span style="color: <%=message.color %>"> <%= message.text %> </span><% } %><% }
+      %><br />
+      <!--[ Load flights from database ]-->
+      <% for(const plane of planes) { %>
+      <!--[ Forms for updating planes ]-->
+      <form action="/admin/updateplane" method="POST">
+        <div class="box">
+          <div class="wrap">
+            <label for="model" style="padding-left: 5px">Model:</label>
+            <input disabled type="text" name="model" value="<%=plane.name %>" />
+            <label for="seats">Seats: </label>
+            <input type="number" name="seats" class="number" value="<%=plane.seats %>" min="1" />
+          </div>
+          <div class="small">
+            <button id="updateplane" type="submit" name="submit" value="update <%=plane.id %>">Update</button>
+          </div>
+        </div>
+      </form>
+      <br />
+      <% } %>
+    </div>
+  </body>
+</html>

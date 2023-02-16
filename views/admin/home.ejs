@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!--[ Use nav bar on every page ]-->
+  <%- include('../includes/head.ejs') %> <%- include('../includes/nav.ejs') %>
+  <body>
+    <div>
+      <h1>Welcome <%= user %></h1>
+      <!--[ Display admin pages ]-->
+      <a href="/admin/planes"><button id="manageplanes" type="submit">Manage planes</button></a>
+      <a href="/admin/flights"><button id="manageflights" type="submit">Manage flights</button></a>
+    </div>
+  </body>
+</html>

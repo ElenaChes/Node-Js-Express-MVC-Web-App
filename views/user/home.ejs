@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!--[ Use nav bar on every page ]-->
+  <%- include('../includes/head.ejs') %> <%- include('../includes/nav.ejs') %>
+  <body onload="info()">
+    <div>
+      <h1>Welcome <%= user %></h1>
+      <!--[ Display user pages ]-->
+      <a href="/user/flights"><button id="bookflights" type="submit">Book flights</button></a>
+    </div>
+    <% var text =message.text; %>
+    <script type="text/javascript">
+      function info() {
+        var message = "<%= text %>";
+        if (!message) return;
+        return alert(message);
+      }
+    </script>
+  </body>
+</html>

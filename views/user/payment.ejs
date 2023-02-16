@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!--[ Use nav bar on every page ]-->
+  <%- include('../includes/head.ejs') %> <%- include('../includes/nav.ejs') %>
+  <body>
+    <div>
+      <h1>Payment</h1>
+      <!--[ Form for payment ]-->
+      <form action="/user/paymentdetails" method="POST">
+        <div class="box large-box">
+          <div class="wrap">
+            <!--[ Display payment options ]-->
+            <div class="box long-box" style="width: 30%">
+              <h2>Payment details:</h2>
+              <div class="wrap">
+                <div class="book">
+                  <label for="idnumber" class="book">ID number:</label>
+                  <label for="fullname" class="book">Full name:</label>
+                  <label for="cardnumber" class="book">Card number:</label>
+                  <div class="wrap" style="justify-content: left">
+                    <label for="storecard" class="book">Save card:</label>
+                    <%if (saveCard) { %>
+                    <input checked type="checkbox" name="storecard" class="check" />
+                    <% } else { %>
+                    <input type="checkbox" name="storecard" class="check" />
+                    <% } %>
+                  </div>
+                </div>
+                <div class="book">
+                  <input type="text" name="idnumber" class="book" value="<%= IDnumber %>" />
+                  <input type="text" name="fullname" class="book" value="<%= fullName %>" />
+                  <input type="text" name="cardnumber" class="book" value="<%= cardNumber %>" />
+                  <button id="fillcard" type="submit" name="submit" value="fillcard" class="mid book" style="font-size: 11px">
+                    Use saved card
+                  </button>
+                </div>
+                <button id="pay" type="submit" name="submit" value="pay">Complete payment</button>
+              </div>
+              <!--[ Info msg ]-->
+              <br /><% if (message){ %> <% if (message.text){ %><span style="color: <%=message.color %>">
+                <%= message.text %> </span
+              ><% } %><% } %>
+            </div>
+            <!--[ Display flight details ]-->
+            <div class="box long-box" style="width: 30%; justify-content: left">
+              <h2>Flight Details:</h2>
+              <div class="wrap">
+                <div class="book">
+                  <label for="destination" class="book">Destination:</label>
+                  <label for="origin" class="book">Origin:</label>
+                  <label for="datetime" class="book">Date:</label>
+                  <label for="flighttype" class="book">Type:</label>
+                  <label for="tickets" class="book">Ticket amount: </label>
+                  <label for="price" class="book">Total price:(₪)</label>
+                </div>
+                <div class="book">
+                  <input readonly type="text" name="destination" value="<%=flight.destination %>" class="book" />
+                  <input readonly type="text" name="origin" value="<%=flight.origin %>" class="book" />
+                  <input readonly type="datetime-local" name="datetime" value="<%=flight.datetime %>" class="book" />
+                  <input readonly type="text" name="flighttype" value="<%=flight.type %>" class="book" />
+                  <input readonly type="text" name="tickets" value="<%=flight.tickets %>" class="book" />
+                  <input readonly type="text" name="price" value="<%=flight.price*flight.tickets %>" class="book" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!--[ Use nav bar on every page ]-->
+  <%- include('../includes/head.ejs') %> <%- include('../includes/nav.ejs') %>
+  <body>
+    <div>
+      <h1>Manage Flights</h1>
+      <!--[ Info msg ]-->
+      <% if (message){ %> <% if (message.text){ %><span style="color: <%=message.color %>"> <%= message.text %> </span><% } %><% }
+      %><br />
+      <!--[ Load flights from database ]-->
+      <% for(const flight of flights) { %>
+      <!--[ Forms for updating flights ]-->
+      <form action="/admin/updateflight" method="POST">
+        <div class="box">
+          <div class="wrap">
+            <label for="destination" style="padding-left: 5px">Destination:</label>
+            <input required type="text" name="destination" value="<%=flight.destination %>" />
+            <label for="origin">Origin:</label>
+            <input required type="text" name="origin" value="<%=flight.origin %>" />
+            <label for="datetime">Date:</label>
+            <input disabled type="datetime-local" name="datetime" value="<%=flight.datetime %>" />
+            <label for="price">Price:(₪)</label>
+            <input
+              required
+              type="number"
+              name="price"
+              class="number"
+              value="<%=flight.price %>"
+              min="1"
+              step="0.01"
+              placeholder="0.00"
+            />
+            <label for="plane">Plane:</label>
+            <select name="plane">
+              <% for(const plane of planes) { %> <% if(plane.id == flight.plane){ %>
+              <option selected value="<%=plane.id %>"><%=`${plane.name} (${flight.occupied}/${plane.seats})` %></option>
+              <%} else {%>
+              <option value="<%=plane.id %>"><%=`${plane.name} (${flight.occupied}/${plane.seats})` %></option>
+              <%}%> <% } %>
+            </select>
+            <label for="flighttype">Type:</label>
+            <input disabled type="text" name="flighttype" class="short" value="<%=flight.type %>" />
+          </div>
+          <div class="small">
+            <button id="updateflights" type="submit" name="submit" value="update <%=flight.id %>">Update</button>
+            <button id="removeflights" type="submit" name="submit" value="remove <%=flight.id %>">Remove</button>
+          </div>
+        </div>
+      </form>
+      <br />
+      <% } %>
+      <!--[ Form for adding flight ]-->
+      <h2>Add new flight</h2>
+      <form action="/admin/addflight" method="POST">
+        <div class="box">
+          <div class="wrap">
+            <label for="destination" style="padding-left: 5px">Destination:</label>
+            <input required type="text" name="destination" class="regInput" placeholder="required" />
+            <label for="origin">Origin:</label>
+            <input required type="text" name="origin" class="regInput" placeholder="required" />
+            <label for="datetime">Date:</label>
+            <input required type="datetime-local" name="datetime" min="<%=(new Date()).toISOString().slice(0, -8) %>" />
+            <label for="price">Price:(₪)</label>
+            <input required type="number" name="price" class="number" min="1" step="0.01" placeholder="0.00" />
+            <label for="plane">Plane:</label>
+            <select name="plane">
+              <% for(const plane of planes) { %>
+              <option value="<%=plane.id %>"><%=`${plane.name} (${plane.seats})` %></option>
+              <% } %>
+            </select>
+            <label for="flighttype">Type:</label>
+            <select name="flighttype">
+              <option value="One-way">One-way</option>
+              <option value="Two-way">Two-way</option>
+            </select>
+          </div>
+          <div class="small">
+            <button id="addflight" type="submit" name="submit" value="add">Add Flight</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

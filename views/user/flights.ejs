@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!--[ Use nav bar on every page ]-->
+  <%- include('../includes/head.ejs') %> <%- include('../includes/nav.ejs') %>
+  <body>
+    <div>
+      <h1>Book a Flight</h1>
+      <!--[ Info msg ]-->
+      <% if (message){ %> <% if (message.text){ %><span style="color: <%=message.color %>"> <%= message.text %> </span><% } %><% }
+      %><br />
+      <!--[ Form for filtering flights ]-->
+      <form action="/user/filterflights" method="POST">
+        <div class="box">
+          <div class="wrap">
+            <label for="destination" style="padding-left: 5px">Destination:</label>
+            <input type="text" class="mid" name="destination" value="<%= filter.destination %>" />
+            <label for="origin">Origin:</label>
+            <input required type="text" class="mid" name="origin" placeholder="required" value="<%= filter.origin %>" />
+            <label for="startdatetime">Start date:</label>
+            <input
+              type="datetime-local"
+              class="long"
+              name="startdatetime"
+              value="<%= filter.startdatetime %>"
+              min="<%=(new Date()).toISOString().slice(0, -8) %>"
+            />
+            <label for="enddatetime">End date:</label>
+            <input
+              type="datetime-local"
+              class="long"
+              name="enddatetime"
+              value="<%= filter.enddatetime %>"
+              min="<%=(new Date()).toISOString().slice(0, -8) %>"
+            />
+            <label for="minprice">Min price:(₪)</label>
+            <input
+              type="number"
+              name="minprice"
+              class="number"
+              min="0"
+              step="0.01"
+              placeholder="0.00"
+              value="<%= filter.minprice %>"
+            />
+            <label for="maxprice">Max price:(₪)</label>
+            <input
+              type="number"
+              name="maxprice"
+              class="number"
+              min="0"
+              step="0.01"
+              placeholder="0.00"
+              value="<%= filter.maxprice %>"
+            />
+            <label for="flighttype">Type:</label>
+            <select name="flighttype">
+              <% if(filter.type == "Two-way"){ %>
+              <option value="One-way">One-way</option>
+              <option selected value="Two-way">Two-way</option>
+              <%} else {%>
+              <option selected value="One-way">One-way</option>
+              <option value="Two-way">Two-way</option>
+              <%}%>
+            </select>
+          </div>
+          <div class="small">
+            <button id="filterflights" type="submit" name="submit" value="filter">Filter</button>
+          </div>
+        </div>
+      </form>
+      <br />
+      <% if (flights) { %>
+      <!--[ Sort loaded flights ]-->
+      <h2>Available flights</h2>
+      <form action="/user/sortflights" method="POST">
+        <div class="small wrap">
+          <label for="sort" style="padding-left: 5px">Order by:</label>
+          <select name="sort" id="sort" onchange="this.form.submit()">
+            <% if (sort) { %> <% if (sort==="priceinc") { %>
+            <option selected value="priceinc">Price increase</option>
+            <option value="pricedec">Price decrease</option>
+            <option value="popular">Most popular</option>
+            <option value="country">Country</option>
+            <% } else if (sort==="pricedec"){%>
+            <option value="priceinc">Price increase</option>
+            <option selected value="pricedec">Price decrease</option>
+            <option value="popular">Most popular</option>
+            <option value="country">Country</option>
+            <% } else if (sort==="popular"){%>
+            <option value="priceinc">Price increase</option>
+            <option value="pricedec">Price decrease</option>
+            <option selected value="popular">Most popular</option>
+            <option value="country">Country</option>
+            <% } else if (sort==="country"){%>
+            <option value="priceinc">Price increase</option>
+            <option value="pricedec">Price decrease</option>
+            <option value="popular">Most popular</option>
+            <option selected value="country">Country</option>
+            <% } %> <% }else{ %>
+            <option selected value="" hidden></option>
+            <option value="priceinc">Price increase</option>
+            <option value="pricedec">Price decrease</option>
+            <option value="popular">Most popular</option>
+            <option value="country">Country</option>
+            <% } %>
+          </select>
+        </div>
+      </form>
+      <br />
+      <% for(const flight of flights) { %>
+      <!--[ Forms for updating flight ]-->
+      <form action="/user/flightbook" method="POST">
+        <div class="box">
+          <div class="wrap">
+            <label for="destination" style="padding-left: 5px">Destination:</label>
+            <input readonly type="text" name="destination" value="<%=flight.destination %>" />
+            <label for="origin">Origin:</label>
+            <input readonly type="text" name="origin" value="<%=flight.origin %>" />
+            <label for="datetime">Date:</label>
+            <input readonly type="datetime-local" name="datetime" value="<%=flight.datetime %>" />
+            <label for="price">Price:(₪)</label>
+            <input readonly type="number" name="price" class="number" value="<%=flight.price %>" />
+            <label for="flighttype">Type:</label>
+            <input readonly type="text" name="flighttype" class="short" value="<%=flight.type %>" />
+          </div>
+          <div class="small">
+            <div class="wrap">
+              <label for="tickets">Number of tickets: </label>
+              <input
+                required
+                type="number"
+                name="tickets"
+                class="number"
+                value="1"
+                min="1"
+                max="<%=flight.emptyseats %>"
+                oninvalid="this.setCustomValidity('Only <%=flight.emptyseats %> seats remaining')"
+                oninput="this.setCustomValidity('')"
+              />
+            </div>
+            <button id="book" type="submit" name="submit" value="book <%=flight.id %>">Book now!</button>
+          </div>
+        </div>
+      </form>
+      <br />
+      <% } %> <% } %>
+    </div>
+  </body>
+</html>

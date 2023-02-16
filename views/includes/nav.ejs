@@ -1,0 +1,18 @@
+<header class="nav">
+  <nav class="nav-nav">
+    <ul class="nav-item-list">
+      <li class="nav-item"><a class="<%= path==='/' ? 'active': '' %>" href="/">Home</a></li>
+      <!--[ Display username&logout option if logged in ]-->
+      <% if (user) { %>
+      <li class="nav-item">
+        <a class="<%= path==='/logout' ? 'active': '' %>" href="/logout">Logout</a> (Logged in as <%= user %>)
+      </li>
+      <!--[ Display login option if not logged in ]-->
+      <% } else { %>
+      <li class="nav-item">
+        <a class="<%= path==='/login' ? 'active': '' %>" href="/login">Login</a>
+      </li>
+      <% } %>
+    </ul>
+  </nav>
+</header>

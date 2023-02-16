@@ -1,0 +1,175 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  background-image: url("../images/background.jpg");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-color: #1e1f24;
+  padding: 0;
+  margin: 0;
+  font: 16px "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/*[ nav ]*/
+.nav {
+  position: fixed;
+  width: 100%;
+  height: 3.5rem;
+  background-color: #000000;
+  padding: 0 1.5rem;
+}
+.nav-nav {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.nav-item-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+.nav-item {
+  margin: 0 1rem;
+  padding: 0;
+  color: white;
+}
+.nav-item a {
+  text-decoration: none;
+  color: white;
+}
+.nav-item a:hover,
+.nav-item a:active,
+.nav-item a.active {
+  color: #ffeb3b;
+}
+
+/*[ div ]*/
+div {
+  color: aliceblue;
+  text-align: center;
+  padding: 50px;
+}
+div.box {
+  border: 5px solid aliceblue;
+  background-color: rgb(32, 33, 39);
+  height: 200px;
+  width: 85%;
+  margin: auto;
+  color: aliceblue;
+  /*display: flex;
+  flex-wrap: wrap;*/
+  justify-content: center;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+div.large-box {
+  height: 800px;
+  justify-content: left;
+}
+div.small-box {
+  width: 50%;
+}
+div.long-box {
+  height: 600px;
+}
+div.small {
+  padding: 20px;
+}
+div.wrap {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+div.book {
+  width: 40%;
+  text-align: left;
+  padding-top: 50px;
+  padding-top: 50px;
+  padding-left: 0px;
+}
+
+/*[ link ]*/
+a:link {
+  color: rgb(180, 168, 200);
+  background-color: transparent;
+  text-decoration: underline;
+}
+a:visited {
+  color: rgb(148, 159, 192);
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+/*[ label ]*/
+label {
+  display: block;
+  padding-left: 20px;
+  padding-right: 5px;
+}
+label.book {
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-bottom: 24px;
+}
+
+/*[  interactive ]*/
+select {
+  height: 23px;
+  padding-left: 5px;
+}
+button {
+  height: 50px;
+  width: 100px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 10px;
+}
+button.small {
+  height: 20px;
+  width: 50px;
+}
+button.mid {
+  height: 40px;
+  width: 70px;
+}
+button.book {
+  margin-top: 0px;
+  margin-left: 115px;
+}
+
+/*[ input ]*/
+input {
+  height: 23px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+input.check {
+  padding-top:0px;
+  margin-top:-2px;
+  margin-left:10px;
+}
+input[disabled] {
+  color: rgb(0, 0, 0);
+  background-color: rgb(205, 205, 205);
+}
+input.number {
+  width: 75px;
+}
+input.long {
+  width: 200px;
+}
+input.mid {
+  width: 100px;
+}
+input.short {
+  width: 75px;
+}
+input.book {
+  width: 185px;
+  margin-bottom: 19px;
+}
