@@ -1,7 +1,7 @@
 # Node Js & Express MVC Web app.
 
 A college project in Node JS using Express and MongoDB.<br>
-Description: a basic "travel agency" website.
+Description: a basic "travel agency" website with permission management and two user types.
 
 # Installation
 
@@ -10,7 +10,7 @@ Description: a basic "travel agency" website.
 ```
 DB=mongodb+srv://<USERNAME>:<PASSWORD>@<CLUSTER>.mongodb.net/?retryWrites=true&w=majority
 ```
-3. Create users in your MongoDB database according to the scheme in `database/account.js`. For example:
+3. Create users in your MongoDB database according to the schema in `database/account.js`. For example:
 ```
 username: "admin"
 password: "admin1"
@@ -37,15 +37,12 @@ permissions: "user"
  
 1. Login to your preferred user.
 2. Admin users can: 
-```
-- adjust the seat ammount of each plane. (don't ask, college requirement)
-- edit, delete and creates flights.
-```
+   - adjust the seat ammount of each plane. (don't ask, college requirement)
+   - edit, delete and creates flights.
 3. Regular users can:
-```
-- view existing flights, sort and filter flights.
-- book tickets for available flights.
-- have the app insert their payment details from the database (if they exist).
-- or input a card manually to "pay" for the flight.
-(Note that the app doesn't check for card validity and doesn't try to make a transaction.)
-```
+   - view existing flights, sort and filter flights.
+   - book tickets for available flights.
+   - have the app insert their payment details from the database (if they exist).
+   - or input a card manually to "pay" for the flight.
+> Note that the app doesn't check for card validity and doesn't try to make a transaction.
+
