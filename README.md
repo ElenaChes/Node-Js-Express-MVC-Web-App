@@ -3,9 +3,29 @@
 <img align="right" style="width:200px; height:auto;" src="/public/images/favicon.ico">
 
 A college project in Node JS using Express and MongoDB.<br>
-Description: a basic "travel agency" website with permission management and two user types.
+Description: a basic "travel agency" website with permission management and two user types.<br>
+Collaborators:
 
+<table>
+   <thead>
+   <tr>
+      <td align="center"><a href="https://github.com/ElenaChes">@ElenaChes</a></td>
+      <td align="center"><a href="https://github.com/RoeiHarfi">@RoeiHarfi</a></td>
+   </tr>
+   </thead>
+   <tbody>
+   <tr>
+      <td>
+         <a href="https://github.com/ElenaChes"><img src="https://github.com/ElenaChes.png?size=115" width=100 /></a>
+      </td>
+      <td>
+         <a href="https://github.com/RoeiHarfi"><img src="https://github.com/RoeiHarfi.png?size=115" width=100 /></a>
+      </td>
+   </tr>
+   </tbody>
+</table>
 <details>
+
   <summary><h3>Content</h3></summary>
 
 - [Installation](#installation)
@@ -23,7 +43,7 @@ Description: a basic "travel agency" website with permission management and two 
 DB=mongodb+srv://<USERNAME>:<PASSWORD>@<CLUSTER>.mongodb.net/?retryWrites=true&w=majority
 ```
 
-3. Create users in your MongoDB database according to the schema in `database/account.js`. For example:
+3. Create users in your MongoDB database according to the schema in `database/account.js`.<br>For example:
 
 <img align="right" style="width:450px; height:auto;" src="https://github.com/ElenaChes/Node-Js-Express-MVC-Web-App/assets/54331769/87d71734-4300-4a1a-911d-e02e5fd6de9a">
 
